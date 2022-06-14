@@ -8,11 +8,11 @@ class Connect:
     self.connection_details = connection_details
     
   def get_document(self, id: str, query: str):
-    print(f'getting document with id ${id} for database with query ${query}')
+    return f'getting document with id ${id} for database with query ${query}'
 
   def update_document(self, id: str):
-    print(f'updating document ${id}')
+    return f'updating document ${id}'
 
   # Save document to our Database by storing the document id and metadata.
   def save_document(self, id: str):
-    print(f'saving document ${id}')
+    return f'saving document ${id}'

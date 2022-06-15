@@ -9,7 +9,8 @@ router = APIRouter()
 # Given two independent document searches represented as array of same Document 
 # object, union them
 def document_union(meta_docs, keyword_docs):
-  return set(meta_docs).union(set(keyword_docs))
+  # TODO: implement properly
+  return meta_docs
 
 
 # Gets a request based on FIELDS, TAGS and KEYWORDS. 
@@ -23,4 +24,4 @@ def search_documents(user_search: UserSearch):
   meta_docs = documents.get_from_metadata(user_search.tags, user_search.fields)
   keyword_docs = documents.get_from_keywords(user_search.keywords)
 
-  return document_union(meta_docs, keyword_docs)
+  return {"docs": document_union(meta_docs, keyword_docs), "meta": meta_docs}

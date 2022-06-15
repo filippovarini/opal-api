@@ -3,7 +3,7 @@ from pydantic import BaseModel
 from enum import Enum
 import json
 
-with open("fake_data.json") as jsonFile:
+with open("./controllers/fake_data.json") as jsonFile:
     jsonObject = json.load(jsonFile)
     jsonFile.close()
 

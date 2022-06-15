@@ -1,0 +1,12 @@
+#!/bin/bash
+imageName=opal-api
+containerName=opal-api-container
+port=8000
+
+docker build -t $imageName -f Dockerfile .
+
+echo Delete old container...
+docker rm -f $containerName
+
+echo Run new container...
+docker run --name $containerName -p $port:$port $imageName

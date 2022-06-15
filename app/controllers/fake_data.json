@@ -43,6 +43,7 @@
     {
       "id": "9",
       "name": "Australia",
+      "format": "PDF",
       "class": "gov-law"
     },
     {
@@ -170,8 +171,9 @@
     {
       "id": "93912",
       "source": "SEC",
+      "format": "PDF",
       "fields": {
-        "name": "Brandywine Global SEC Filing",
+        "title": "Brandywine Global SEC Filing",
         "language": "English",
         "type": "Other",
         "topic": "OTC Derivatives",
@@ -186,8 +188,9 @@
     {
       "id": "93912",
       "source": "SEC",
+      "format": "PDF",
       "fields": {
-        "name": "Wiskycider International SEC Filing",
+        "title": "Wiskycider International SEC Filing",
         "language": "English",
         "type": "Other",
         "topic": "OTC Derivatives",
@@ -202,8 +205,9 @@
     {
       "id": "93912",
       "source": "SEC",
+      "format": "PDF",
       "fields": {
-        "name": "Portchardonnay Mondial SEC Filing",
+        "title": "Portchardonnay Mondial SEC Filing",
         "language": "French",
         "type": "Other",
         "topic": "OTC Derivatives",
@@ -218,8 +222,9 @@
     {
       "id": "93912",
       "source": "SEC",
+      "format": "PDF",
       "fields": {
-        "name": "Beer & Beer Weltweit SEC Filing",
+        "title": "Beer & Beer Weltweit SEC Filing",
         "language": "German",
         "type": "Other",
         "topic": "OTC Derivatives",
@@ -234,8 +239,9 @@
     {
       "id": "93912",
       "source": "SEC",
+      "format": "PDF",
       "fields": {
-        "name": "Brandywine Global SEC Filing",
+        "title": "Brandywine Global SEC Filing",
         "language": "English",
         "type": "Other",
         "topic": "OTC Derivatives",
@@ -250,8 +256,9 @@
     {
       "id": "93912",
       "source": "SEC",
+      "format": "PDF",
       "fields": {
-        "name": "Wiskycider International SEC Filing",
+        "title": "Wiskycider International SEC Filing",
         "language": "English",
         "type": "Other",
         "topic": "OTC Derivatives",
@@ -266,8 +273,9 @@
     {
       "id": "93912",
       "source": "SEC",
+      "format": "PDF",
       "fields": {
-        "name": "Portchardonnay Mondial SEC Filing",
+        "title": "Portchardonnay Mondial SEC Filing",
         "language": "French",
         "type": "Other",
         "topic": "OTC Derivatives",
@@ -282,8 +290,9 @@
     {
       "id": "93912",
       "source": "SEC",
+      "format": "PDF",
       "fields": {
-        "name": "Beer & Beer Weltweit SEC Filing",
+        "title": "Beer & Beer Weltweit SEC Filing",
         "language": "German",
         "type": "Other",
         "topic": "OTC Derivatives",
@@ -298,8 +307,9 @@
     {
       "id": "93912",
       "source": "SEC",
+      "format": "PDF",
       "fields": {
-        "name": "Brandywine Global SEC Filing",
+        "title": "Brandywine Global SEC Filing",
         "language": "English",
         "type": "Other",
         "topic": "OTC Derivatives",
@@ -314,8 +324,9 @@
     {
       "id": "93912",
       "source": "SEC",
+      "format": "PDF",
       "fields": {
-        "name": "Wiskycider International SEC Filing",
+        "title": "Wiskycider International SEC Filing",
         "language": "English",
         "type": "Other",
         "topic": "OTC Derivatives",
@@ -330,8 +341,9 @@
     {
       "id": "93912",
       "source": "SEC",
+      "format": "PDF",
       "fields": {
-        "name": "Portchardonnay Mondial SEC Filing",
+        "title": "Portchardonnay Mondial SEC Filing",
         "language": "French",
         "type": "Other",
         "topic": "OTC Derivatives",
@@ -346,8 +358,9 @@
     {
       "id": "93912",
       "source": "SEC",
+      "format": "PDF",
       "fields": {
-        "name": "Beer & Beer Weltweit SEC Filing",
+        "title": "Beer & Beer Weltweit SEC Filing",
         "language": "German",
         "type": "Other",
         "topic": "OTC Derivatives",
@@ -362,8 +375,9 @@
     {
       "id": "93912",
       "source": "SEC",
+      "format": "PDF",
       "fields": {
-        "name": "Brandywine Global SEC Filing",
+        "title": "Brandywine Global SEC Filing",
         "language": "English",
         "type": "Other",
         "topic": "OTC Derivatives",
@@ -378,8 +392,9 @@
     {
       "id": "93912",
       "source": "SEC",
+      "format": "PDF",
       "fields": {
-        "name": "Wiskycider International SEC Filing",
+        "title": "Wiskycider International SEC Filing",
         "language": "English",
         "type": "Other",
         "topic": "OTC Derivatives",
@@ -394,8 +409,9 @@
     {
       "id": "93912",
       "source": "SEC",
+      "format": "PDF",
       "fields": {
-        "name": "Portchardonnay Mondial SEC Filing",
+        "title": "Portchardonnay Mondial SEC Filing",
         "language": "French",
         "type": "Other",
         "topic": "OTC Derivatives",
@@ -410,8 +426,9 @@
     {
       "id": "93912",
       "source": "SEC",
+      "format": "PDF",
       "fields": {
-        "name": "Beer & Beer Weltweit SEC Filing",
+        "title": "Beer & Beer Weltweit SEC Filing",
         "language": "German",
         "type": "Other",
         "topic": "OTC Derivatives",

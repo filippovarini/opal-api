@@ -2,7 +2,8 @@ from ast import keyword
 from curses import meta
 from typing import Dict, List
 from fastapi import APIRouter
-from controllers.documents import UserSearch, documentController as documents
+from controllers.docController import documentController as documents
+from assets.search import UserSearch
 
 router = APIRouter()
   

@@ -1,11 +1,16 @@
-from ast import keyword
-from curses import meta
-from typing import Dict, List
+from typing import Optional, List
+from pydantic import BaseModel
 from fastapi import APIRouter
 from controllers.docController import documentController as documents
-from assets.search import UserSearch
+from assets.document import DocumentFields
 
 router = APIRouter()
+
+# Type model of User Search request body
+class UserSearch(BaseModel):
+  tags: Optional[List[str]] = []       # list of tag ids
+  keywords: Optional[List[str]] = []
+  fields: Optional[DocumentFields] = {}
   
 # Given two independent document searches represented as array of same Document 
 # object, union them

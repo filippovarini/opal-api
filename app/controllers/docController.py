@@ -1,5 +1,4 @@
-from assets.document import Document
-from assets.search import Fields
+from assets.document import Document, DocumentFields
 from typing import List
 import json
 
@@ -12,10 +11,10 @@ with open("./controllers/fake_data.json") as jsonFile:
 documents = [Document(**doc) for doc in jsonObject['documents']]
 
 # Controller to perform the Client's documentsearch
-class Document:
+class DocumentController:
 
   # Searches the document from metadata stored in our DB (tags, fiels)
-  def get_from_metadata(self, tags: List[str], fields: Fields) -> List[Document]:
+  def get_from_metadata(self, tags: List[str], fields: DocumentFields) -> List[Document]:
     # Checks whether BIG list has all elements of SMALL
     def isSublist(small: list, big: list) -> bool:
       return all(elem in big for elem in small)
@@ -27,4 +26,4 @@ class Document:
     return []
 
   
-documentController = Document()
+documentController = DocumentController()

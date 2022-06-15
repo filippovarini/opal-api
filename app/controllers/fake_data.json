@@ -3,168 +3,168 @@
     {
       "id": "1",
       "name": "Asset Liability Investment Solutions",
-      "class": "doc-type"
+      "type": "doc-type"
     },
     {
       "id": "2",
       "name": "International Asset Management Services",
-      "class": "doc-type"
+      "type": "doc-type"
     },
     {
       "id": "3",
       "name": "Employment Relationships",
-      "class": "doc-type"
+      "type": "doc-type"
     },
     {
       "id": "4",
       "name": "Netting",
-      "class": "doc-type"
+      "type": "doc-type"
     },
     {
       "id": "5",
       "name": "OTC Derivatives",
-      "class": "doc-type"
+      "type": "doc-type"
     },
     {
       "id": "6",
       "name": "Private Equity Fund",
-      "class": "doc-type"
+      "type": "doc-type"
     },
     {
       "id": "7",
       "name": "Web Scraping of Third Party Websites",
-      "class": "doc-type"
+      "type": "doc-type"
     },
     {
       "id": "8",
       "name": "Other",
-      "class": "doc-type"
+      "type": "doc-type"
     },
     {
       "id": "9",
       "name": "Australia",
       "format": "PDF",
-      "class": "gov-law"
+      "type": "gov-law"
     },
     {
       "id": "10",
       "name": "China",
-      "class": "gov-law"
+      "type": "gov-law"
     },
     {
       "id": "11",
       "name": "England and Wales",
-      "class": "gov-law"
+      "type": "gov-law"
     },
     {
       "id": "12",
       "name": "Germany",
-      "class": "gov-law"
+      "type": "gov-law"
     },
     {
       "id": "13",
       "name": "Hong Kong",
-      "class": "gov-law"
+      "type": "gov-law"
     },
     {
       "id": "14",
       "name": "Japan",
-      "class": "gov-law"
+      "type": "gov-law"
     },
     {
       "id": "15",
       "name": "New York",
-      "class": "gov-law"
+      "type": "gov-law"
     },
     {
       "id": "16",
       "name": "New Zealand",
-      "class": "gov-law"
+      "type": "gov-law"
     },
     {
       "id": "13",
       "name": "Switzerland",
-      "class": "gov-law"
+      "type": "gov-law"
     },
     {
       "id": "14",
       "name": "Singapore",
-      "class": "gov-law"
+      "type": "gov-law"
     },
     {
       "id": "15",
       "name": "Taiwan",
-      "class": "gov-law"
+      "type": "gov-law"
     },
     {
       "id": "16",
       "name": "Other",
-      "class": "gov-law"
+      "type": "gov-law"
     },
     {
       "id": "17",
       "name": "Chinese",
-      "class": "language"
+      "type": "language"
     },
     {
       "id": "18",
       "name": "English",
-      "class": "language"
+      "type": "language"
     },
     {
       "id": "19",
       "name": "French",
-      "class": "language"
+      "type": "language"
     },
     {
       "id": "20",
       "name": "German",
-      "class": "language"
+      "type": "language"
     },
     {
       "id": "21",
       "name": "Italian",
-      "class": "language"
+      "type": "language"
     },
     {
       "id": "22",
       "name": "Japanese",
-      "class": "language"
+      "type": "language"
     },
     {
       "id": "23",
       "name": "Portuguese",
-      "class": "language"
+      "type": "language"
     },
     {
       "id": "24",
       "name": "Spanish",
-      "class": "language"
+      "type": "language"
     },
     {
       "id": "25",
       "name": "Other",
-      "class": "language"
+      "type": "language"
     },
     {
       "id": "26",
       "name": "Strictly Confidential",
-      "class": "classification"
+      "type": "classification"
     },
     {
       "id": "27",
       "name": "Confidential",
-      "class": "classification"
+      "type": "classification"
     },
     {
       "id": "28",
       "name": "Internal",
-      "class": "classification"
+      "type": "classification"
     },
     {
       "id": "29",
       "name": "Public",
-      "class": "classification"
+      "type": "classification"
     }
   ],
   "documents": [

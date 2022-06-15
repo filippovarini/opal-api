@@ -1,173 +1,174 @@
 {
-"tags": [{
-      "id": 1,
+  "tags": [
+    {
+      "id": "1",
       "name": "Asset Liability Investment Solutions",
       "class": "doc-type"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "International Asset Management Services",
       "class": "doc-type"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Employment Relationships",
       "class": "doc-type"
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Netting",
       "class": "doc-type"
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "OTC Derivatives",
       "class": "doc-type"
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "Private Equity Fund",
       "class": "doc-type"
     },
     {
-      "id": 7,
+      "id": "7",
       "name": "Web Scraping of Third Party Websites",
       "class": "doc-type"
     },
     {
-      "id": 8,
+      "id": "8",
       "name": "Other",
       "class": "doc-type"
     },
     {
-      "id": 9,
+      "id": "9",
       "name": "Australia",
       "class": "gov-law"
     },
     {
-      "id": 10,
+      "id": "10",
       "name": "China",
       "class": "gov-law"
     },
     {
-      "id": 11,
+      "id": "11",
       "name": "England and Wales",
       "class": "gov-law"
     },
     {
-      "id": 12,
+      "id": "12",
       "name": "Germany",
       "class": "gov-law"
     },
     {
-      "id": 13,
+      "id": "13",
       "name": "Hong Kong",
       "class": "gov-law"
     },
     {
-      "id": 14,
+      "id": "14",
       "name": "Japan",
       "class": "gov-law"
     },
     {
-      "id": 15,
+      "id": "15",
       "name": "New York",
       "class": "gov-law"
     },
     {
-      "id": 16,
+      "id": "16",
       "name": "New Zealand",
       "class": "gov-law"
     },
     {
-      "id": 13,
+      "id": "13",
       "name": "Switzerland",
       "class": "gov-law"
     },
     {
-      "id": 14,
+      "id": "14",
       "name": "Singapore",
       "class": "gov-law"
     },
     {
-      "id": 15,
+      "id": "15",
       "name": "Taiwan",
       "class": "gov-law"
     },
     {
-      "id": 16,
+      "id": "16",
       "name": "Other",
       "class": "gov-law"
     },
     {
-      "id": 17,
+      "id": "17",
       "name": "Chinese",
       "class": "language"
     },
     {
-      "id": 18,
+      "id": "18",
       "name": "English",
       "class": "language"
     },
     {
-      "id": 19,
+      "id": "19",
       "name": "French",
       "class": "language"
     },
     {
-      "id": 20,
+      "id": "20",
       "name": "German",
       "class": "language"
     },
     {
-      "id": 21,
+      "id": "21",
       "name": "Italian",
       "class": "language"
     },
     {
-      "id": 22,
+      "id": "22",
       "name": "Japanese",
       "class": "language"
     },
     {
-      "id": 23,
+      "id": "23",
       "name": "Portuguese",
       "class": "language"
     },
     {
-      "id": 24,
+      "id": "24",
       "name": "Spanish",
       "class": "language"
     },
     {
-      "id": 25,
+      "id": "25",
       "name": "Other",
       "class": "language"
     },
     {
-      "id": 26,
+      "id": "26",
       "name": "Strictly Confidential",
       "class": "classification"
     },
     {
-      "id": 27,
+      "id": "27",
       "name": "Confidential",
       "class": "classification"
     },
     {
-      "id": 28,
+      "id": "28",
       "name": "Internal",
       "class": "classification"
     },
     {
-      "id": 29,
+      "id": "29",
       "name": "Public",
       "class": "classification"
     }
   ],
   "documents": [
     {
-      "id": 93912,
+      "id": "93912",
       "source": "SEC",
       "fields": {
         "name": "Brandywine Global SEC Filing",
@@ -183,7 +184,7 @@
       "tags": ["1", "2", "3"]
     },
     {
-      "id": 93912,
+      "id": "93912",
       "source": "SEC",
       "fields": {
         "name": "Wiskycider International SEC Filing",
@@ -199,7 +200,7 @@
       "tags": ["2", 5]
     },
     {
-      "id": 93912,
+      "id": "93912",
       "source": "SEC",
       "fields": {
         "name": "Portchardonnay Mondial SEC Filing",
@@ -215,7 +216,7 @@
       "tags": ["9", 14]
     },
     {
-      "id": 93912,
+      "id": "93912",
       "source": "SEC",
       "fields": {
         "name": "Beer & Beer Weltweit SEC Filing",
@@ -231,7 +232,7 @@
       "tags": ["2", 12]
     },
     {
-      "id": 93912,
+      "id": "93912",
       "source": "SEC",
       "fields": {
         "name": "Brandywine Global SEC Filing",
@@ -247,7 +248,7 @@
       "tags": ["17", 15]
     },
     {
-      "id": 93912,
+      "id": "93912",
       "source": "SEC",
       "fields": {
         "name": "Wiskycider International SEC Filing",
@@ -263,7 +264,7 @@
       "tags": ["1", "2", "3"]
     },
     {
-      "id": 93912,
+      "id": "93912",
       "source": "SEC",
       "fields": {
         "name": "Portchardonnay Mondial SEC Filing",
@@ -279,7 +280,7 @@
       "tags": ["19", "18"]
     },
     {
-      "id": 93912,
+      "id": "93912",
       "source": "SEC",
       "fields": {
         "name": "Beer & Beer Weltweit SEC Filing",
@@ -295,7 +296,7 @@
       "tags": ["10"]
     },
     {
-      "id": 93912,
+      "id": "93912",
       "source": "SEC",
       "fields": {
         "name": "Brandywine Global SEC Filing",
@@ -311,7 +312,7 @@
       "tags": ["1", "2", "3"]
     },
     {
-      "id": 93912,
+      "id": "93912",
       "source": "SEC",
       "fields": {
         "name": "Wiskycider International SEC Filing",
@@ -327,7 +328,7 @@
       "tags": ["2", "5"]
     },
     {
-      "id": 93912,
+      "id": "93912",
       "source": "SEC",
       "fields": {
         "name": "Portchardonnay Mondial SEC Filing",
@@ -343,7 +344,7 @@
       "tags": ["9", "14"]
     },
     {
-      "id": 93912,
+      "id": "93912",
       "source": "SEC",
       "fields": {
         "name": "Beer & Beer Weltweit SEC Filing",
@@ -359,7 +360,7 @@
       "tags": ["2", "12"]
     },
     {
-      "id": 93912,
+      "id": "93912",
       "source": "SEC",
       "fields": {
         "name": "Brandywine Global SEC Filing",
@@ -375,7 +376,7 @@
       "tags": ["17", "15"]
     },
     {
-      "id": 93912,
+      "id": "93912",
       "source": "SEC",
       "fields": {
         "name": "Wiskycider International SEC Filing",
@@ -391,7 +392,7 @@
       "tags": ["1", "2", "3"]
     },
     {
-      "id": 93912,
+      "id": "93912",
       "source": "SEC",
       "fields": {
         "name": "Portchardonnay Mondial SEC Filing",
@@ -407,7 +408,7 @@
       "tags": ["19", "18"]
     },
     {
-      "id": 93912,
+      "id": "93912",
       "source": "SEC",
       "fields": {
         "name": "Beer & Beer Weltweit SEC Filing",

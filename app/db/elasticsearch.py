@@ -3,6 +3,7 @@ from typing import List
 from assets.document import Document, DocumentFields
 from core.config import settings
 import httpx
+import json
 
 class ElasticSearch():
   URI = f'{settings.ES_API}/{settings.DOC_INDEX}/_search'
@@ -34,18 +35,26 @@ class ElasticSearch():
           }
         }
       }
-    } if len(tags) > 0 else None
+    }
     
     fields = fieldsModel.dict()
     fieldQuery = [{"match": {f'fields.{key}': fields[key]}} for key in fields if fields[key]]
 
+    filters = []
+    if len(tags) > 0:
+      filter.append(tagQuery)
+    if len(fieldQuery) > 0:
+      filter += fieldQuery
+    
     query = {
       "query": {
         "bool": {
-          "filter": [tagQuery, *fieldQuery]
+          "filter": filters
         }
       }
     }
+
+    print(json.dumps(query, indent=2))
 
     async with httpx.AsyncClient() as client:
       try:

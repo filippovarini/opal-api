@@ -37,13 +37,13 @@ class ElasticSearch():
       }
     }
     
-    fields = fieldsModel.dict()
-    fieldQuery = [{"match": {f'fields.{key}': fields[key]}} for key in fields if fields[key]]
-
     filters = []
     if len(tags) > 0:
       filter.append(tagQuery)
-    if len(fieldQuery) > 0:
+
+    if fieldsModel: 
+      fields = fieldsModel.dict()
+      fieldQuery = [{"match": {f'fields.{key}': fields[key]}} for key in fields if fields[key]]
       filter += fieldQuery
     
     query = {
@@ -54,8 +54,6 @@ class ElasticSearch():
       }
     }
 
-    print(json.dumps(query, indent=2))
-
     async with httpx.AsyncClient() as client:
       try:
         response = await client.post(self.URI, headers=self.headers, json=query)
@@ -65,6 +63,5 @@ class ElasticSearch():
       # TODO: handle errors
       except Exception as err:
         print("***** Error in sending the request *****")
-        print(err)
 
 elasticSearch = ElasticSearch()

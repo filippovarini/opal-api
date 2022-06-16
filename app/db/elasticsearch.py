@@ -39,12 +39,12 @@ class ElasticSearch():
     
     filters = []
     if len(tags) > 0:
-      filter.append(tagQuery)
+      filters.append(tagQuery)
 
     if fieldsModel: 
       fields = fieldsModel.dict()
       fieldQuery = [{"match": {f'fields.{key}': fields[key]}} for key in fields if fields[key]]
-      filter += fieldQuery
+      filters += fieldQuery
     
     query = {
       "query": {

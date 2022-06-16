@@ -21,12 +21,8 @@ class TagController:
   def get_from_substring(self, substr: str): 
     return [tag for tag in tags if substr.lower() in tag.name.lower()]
 
-  def get_from_id(self, id: str): 
-    for tag in tags:
-      if tag.id == id:
-        return tag
-    
-    return None
+  def get_from_ids(self, ids: str): 
+    return [tag for tag in tags if tag.id in ids]
 
 
 controller = TagController()

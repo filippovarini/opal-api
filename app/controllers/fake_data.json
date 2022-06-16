@@ -63,26 +63,6 @@
     },
     {
       "id": "13",
-      "name": "Hong Kong",
-      "type": "gov-law"
-    },
-    {
-      "id": "14",
-      "name": "Japan",
-      "type": "gov-law"
-    },
-    {
-      "id": "15",
-      "name": "New York",
-      "type": "gov-law"
-    },
-    {
-      "id": "16",
-      "name": "New Zealand",
-      "type": "gov-law"
-    },
-    {
-      "id": "13",
       "name": "Switzerland",
       "type": "gov-law"
     },

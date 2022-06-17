@@ -1,3 +1,4 @@
+from unittest import result
 from pydantic import BaseModel
 import json
 
@@ -19,7 +20,8 @@ tags = [Tag(**tag) for tag in jsonObject['tags']]
 class TagController: 
 
   def get_from_substring(self, substr: str): 
-    return [tag for tag in tags if substr.lower() in tag.name.lower()]
+    tag_retrieved = [tag for tag in tags if substr.lower() in tag.name.lower()]
+    return sorted(tag_retrieved, key=lambda tag: tag.name)
 
   def get_from_ids(self, ids: str): 
     return [tag for tag in tags if tag.id in ids]

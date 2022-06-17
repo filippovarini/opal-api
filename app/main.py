@@ -5,8 +5,7 @@ from core.config import settings
 
 app = FastAPI()
 
-ORIGINS = ['http://localhost:3000', "http://35.196.18.224",
-           "http://35.196.18.224:3000", "http://opaldocs.com/"]
+ORIGINS = ["*"]
 
 app.add_middleware(
     CORSMiddleware,

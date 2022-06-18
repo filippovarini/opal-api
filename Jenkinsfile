@@ -21,14 +21,6 @@ pipeline {
     }
   }
   stages {
-    stage('check kubectl works') {
-      when { branch 'master' }
-      steps {
-        container('kubectl') {
-          sh "kubectl set image --namespace=default deployment/search-prod search-1=gcr.io/lawyer-document-search/search:latest"
-        }
-      }
-    }
     stage('build and push dev image with cloud builder') {
       when { branch 'dev' }
       steps {

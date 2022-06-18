@@ -25,7 +25,7 @@ pipeline {
       when { branch 'master' }
       steps {
         container('kubectl') {
-          sh "kubectl set image --namespace=frontend deployment/frontend-prod frontend-1=gcr.io/lawyer-document-search/search:latest"
+          sh "kubectl set image --namespace=default deployment/search-prod search-1=gcr.io/lawyer-document-search/search:latest"
         }
       }
     }

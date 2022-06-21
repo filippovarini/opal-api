@@ -16,12 +16,9 @@ class DocumentFields(BaseModel):
   title: Optional[str]
   language: Optional[str]
   type: Optional[str]
-  topic: Optional[str]
-  source: Optional[str]
   date: Optional[str]
   govlaw: Optional[str]
   access: Optional[str]
-  status: Optional[str]
 
 class Document(BaseModel):
   id: str

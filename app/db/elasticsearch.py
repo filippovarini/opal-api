@@ -3,10 +3,14 @@ from typing import List
 from assets.document import Document, DocumentFields
 from core.config import settings
 import httpx
+import random
 import json
 
 class ElasticSearch():
   URI = f'{settings.ES_API}/{settings.DOC_INDEX}/_search'
+  POST_URI = f'{settings.ES_API}/{settings.DOC_INDEX}/_doc'
+  RESULT_SIZE = 100
+
   def __init__(self) -> None:
     self.headers = {
       "Content-Type": "application/json",
@@ -51,7 +55,8 @@ class ElasticSearch():
         "bool": {
           "filter": filters
         }
-      }
+      },
+      "size": self.RESULT_SIZE
     }
 
     async with httpx.AsyncClient() as client:
@@ -63,5 +68,6 @@ class ElasticSearch():
       # TODO: handle errors
       except Exception as err:
         print("***** Error in sending the request *****")
+        print(err)
 
 elasticSearch = ElasticSearch()

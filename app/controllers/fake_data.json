@@ -3,148 +3,148 @@
     {
       "id": "1",
       "name": "Asset Liability Investment Solutions",
-      "type": "doc-type"
+      "type": "topic"
     },
     {
       "id": "2",
       "name": "International Asset Management Services",
-      "type": "doc-type"
+      "type": "topic"
     },
     {
       "id": "3",
       "name": "Employment Relationships",
-      "type": "doc-type"
+      "type": "topic"
     },
     {
       "id": "4",
       "name": "Netting",
-      "type": "doc-type"
+      "type": "topic"
     },
     {
       "id": "5",
       "name": "OTC Derivatives",
-      "type": "doc-type"
+      "type": "topic"
     },
     {
       "id": "6",
       "name": "Private Equity Fund",
-      "type": "doc-type"
+      "type": "topic"
     },
     {
       "id": "7",
       "name": "Web Scraping of Third Party Websites",
-      "type": "doc-type"
+      "type": "topic"
     },
     {
       "id": "8",
-      "name": "Other",
-      "type": "doc-type"
+      "name": "Russian Sanctions",
+      "type": "topic"
     },
     {
       "id": "9",
-      "name": "Australia",
+      "name": "International Fraud",
       "format": "PDF",
-      "type": "gov-law"
+      "type": "topic"
     },
     {
       "id": "10",
-      "name": "China",
-      "type": "gov-law"
+      "name": "GDPR violation",
+      "type": "topic"
     },
     {
       "id": "11",
-      "name": "England and Wales",
-      "type": "gov-law"
+      "name": "Copyright violation",
+      "type": "topic"
     },
     {
       "id": "12",
-      "name": "Germany",
-      "type": "gov-law"
+      "name": "Employment",
+      "type": "topic"
     },
     {
       "id": "13",
-      "name": "Switzerland",
-      "type": "gov-law"
+      "name": "FOIA (Freedom of Information Act)",
+      "type": "topic"
     },
     {
       "id": "14",
-      "name": "Singapore",
-      "type": "gov-law"
+      "name": "FTCA (Federal Trade Commission Act)",
+      "type": "topic"
     },
     {
       "id": "15",
-      "name": "Taiwan",
-      "type": "gov-law"
+      "name": "McCarran-Ferguson",
+      "type": "topic"
     },
     {
       "id": "16",
-      "name": "Other",
-      "type": "gov-law"
+      "name": "Revenue",
+      "type": "topic"
     },
     {
       "id": "17",
-      "name": "Chinese",
-      "type": "language"
+      "name": "Robinson-Patman",
+      "type": "topic"
     },
     {
       "id": "18",
-      "name": "English",
-      "type": "language"
+      "name": "Sherman Act",
+      "type": "topic"
     },
     {
       "id": "19",
-      "name": "French",
-      "type": "language"
+      "name": "Shareholders",
+      "type": "topic"
     },
     {
       "id": "20",
-      "name": "German",
-      "type": "language"
+      "name": "Bankruptcy",
+      "type": "topic"
     },
     {
       "id": "21",
-      "name": "Italian",
-      "type": "language"
+      "name": "Taxation",
+      "type": "topic"
     },
     {
       "id": "22",
-      "name": "Japanese",
-      "type": "language"
+      "name": "Trademark",
+      "type": "topic"
     },
     {
       "id": "23",
-      "name": "Portuguese",
-      "type": "language"
+      "name": "Workers' Compensation",
+      "type": "topic"
     },
     {
       "id": "24",
-      "name": "Spanish",
-      "type": "language"
+      "name": "Antitrust Law",
+      "type": "topic"
     },
     {
       "id": "25",
-      "name": "Other",
-      "type": "language"
+      "name": "Attorney Fees",
+      "type": "topic"
     },
     {
       "id": "26",
-      "name": "Strictly Confidential",
-      "type": "classification"
+      "name": "Commercial Law",
+      "type": "topic"
     },
     {
       "id": "27",
-      "name": "Confidential",
-      "type": "classification"
+      "name": "Corporations",
+      "type": "topic"
     },
     {
       "id": "28",
-      "name": "Internal",
-      "type": "classification"
+      "name": "Contributions",
+      "type": "topic"
     },
     {
       "id": "29",
-      "name": "Public",
-      "type": "classification"
+      "name": "Derivatives",
+      "type": "topic"
     }
   ]
 }

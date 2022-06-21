@@ -8,7 +8,7 @@ pipeline {
     CLUSTER_ZONE = "us-east1-d"
     //IMAGE_TAG = "gcr.io/${PROJECT}/${APP_NAME}:${env.BRANCH_NAME}.${env.BUILD_NUMBER}"
     DEV_IMAGE_TAG = "gcr.io/${PROJECT}/${APP_NAME}:dev"
-    PROD_IMAGE_TAG = "gcr.io/${PROJECT}/${APP_NAME}:latest"
+    PROD_IMAGE_TAG = "gcr.io/${PROJECT}/${APP_NAME}:${env.BUILD_NUMBER}"
     JENKINS_CRED = "${PROJECT}"
   }
 
@@ -34,6 +34,14 @@ pipeline {
       steps {
         container('gcloud') {  
           sh "PYTHONUNBUFFERED=1 gcloud builds submit -t ${PROD_IMAGE_TAG} ."  
+        }
+      }
+    }
+    stage('update production container image') {
+      when { branch 'master' }
+      steps {
+        container('kubectl') {
+          sh "kubectl set image --namespace=default deployment/search-prod search-1=${PROD_IMAGE_TAG}"
         }
       }
     }

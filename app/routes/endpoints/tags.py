@@ -9,8 +9,7 @@ def tags_from_substring(tag_substring: str):
   return {"tags": controller.get_from_substring(tag_substring)}
 
 @router.post("/")
-def tags_from_id(body: Dict[str, List[str]], response: Response):
-  ids = body['tags']
+def tags_from_id(ids: List[str], response: Response):
   tags = controller.get_from_ids(ids)
   if (len(tags) == len(ids)):
     return {"tags": tags}

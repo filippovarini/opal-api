@@ -7,12 +7,8 @@ class DocumentFormat(str, Enum):
   PDF = 'PDF'
   WORD = 'WORD'
   HTML = 'HTML'
-  
 
-class Document(BaseModel):
-  id: str
-  format: DocumentFormat
-  tags: Optional[List[str]]
+class DocumentFields(BaseModel):
   title: Optional[str]
   language: Optional[str]
   type: Optional[str]
@@ -24,3 +20,13 @@ class Document(BaseModel):
   full_text: Optional[str]
   pdf_url: Optional[str]
   summary: Optional[str]
+
+
+  
+
+class Document(BaseModel):
+  id: str
+  format: DocumentFormat
+  tags: Optional[List[str]]
+  fields: DocumentFields
+  

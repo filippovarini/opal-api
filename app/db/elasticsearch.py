@@ -9,7 +9,7 @@ import json
 class ElasticSearch():
   URI = f'{settings.ES_API}/{settings.DOC_INDEX}/_search'
   POST_URI = f'{settings.ES_API}/{settings.DOC_INDEX}/_doc'
-  RESULT_SIZE = 30
+  RESULT_SIZE = 100
 
   def __init__(self) -> None:
     self.headers = {

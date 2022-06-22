@@ -7,22 +7,20 @@ class DocumentFormat(str, Enum):
   PDF = 'PDF'
   WORD = 'WORD'
   HTML = 'HTML'
-
-# Document source. Database where the document comes from.
-class SourceDB(str, Enum):
-  SEC = 'SEC'
-
-class DocumentFields(BaseModel):
-  title: Optional[str]
-  language: Optional[str]
-  type: Optional[str]
-  date: Optional[str]
-  govlaw: Optional[str]
-  access: Optional[str]
+  
 
 class Document(BaseModel):
   id: str
   format: DocumentFormat
-  source: SourceDB
-  tags: List[str]
-  fields: DocumentFields
+  tags: Optional[List[str]]
+  title: Optional[str]
+  language: Optional[str]
+  type: Optional[str]
+  date: Optional[str]
+  governing_law: Optional[List[str]]
+  access: Optional[str]
+  parties: Optional[List[str]]
+  judges: Optional[List[str]]
+  full_text: Optional[str]
+  pdf_url: Optional[str]
+  summary: Optional[str]

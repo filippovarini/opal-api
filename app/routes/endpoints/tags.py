@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Dict
 from fastapi import APIRouter, Response, status
 from controllers.tagController import controller
 
@@ -9,7 +9,8 @@ def tags_from_substring(tag_substring: str):
   return {"tags": controller.get_from_substring(tag_substring)}
 
 @router.post("/")
-def tags_from_id(ids: List[str], response: Response):
+def tags_from_id(body: Dict[str, List[str]], response: Response):
+  ids = body['tags']
   tags = controller.get_from_ids(ids)
   if (len(tags) == len(ids)):
     return {"tags": tags}

@@ -1,4 +1,4 @@
-from typing import List, Dict
+from typing import List, Dict, Optional
 from unittest import result
 from pydantic import BaseModel
 from db.db_controller import database
@@ -8,7 +8,8 @@ import json
 class Tag(BaseModel):
   id: str
   name: str
-  type: str
+  owner: Optional[str] = "global"
+  type: Optional[str] = "user_defined"
   
 
 # Read Fake Json data
@@ -21,11 +22,12 @@ tags = [Tag(**tag) for tag in jsonObject['tags']]
 # Create Tag Controller class
 class TagController: 
 
-  def get_from_substring(self, substr: str, username: str = None): 
+  async def get_from_substring(self, substr: str, username: str = None): 
     print(username)
     tag_retrieved = [tag for tag in tags if substr.lower() in tag.name.lower()]
-    user_tags = database.suggest_user_search_tags(substr)
-    tag_retrieved = tag_retrieved + user_tags
+    user_tags = await database.suggest_user_search_tags(substr)
+    tag_retrieved = tag_retrieved + [Tag(**tag) for tag in user_tags]
+    print(tag_retrieved)
     return sorted(tag_retrieved, key=lambda tag: tag.name)
 
   def get_from_ids(self, ids: str): 

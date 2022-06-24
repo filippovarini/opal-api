@@ -72,8 +72,8 @@ class ElasticSearch():
     }
     
     filters = []
-    # if len(tags) > 0:
-    #   filters.append(tagQuery)
+    if len(tags) > 0:
+      filters.append(tagQuery)
 
     if fieldsModel: 
       fields = fieldsModel.dict()

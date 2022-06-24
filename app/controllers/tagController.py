@@ -20,7 +20,6 @@ tags = [Tag(**tag) for tag in jsonObject['tags']]
 class TagController: 
 
   def get_from_substring(self, substr: str, username: str = None): 
-    print(username)
     tag_retrieved = [tag for tag in tags if substr.lower() in tag.name.lower()]
     return sorted(tag_retrieved, key=lambda tag: tag.name)
 

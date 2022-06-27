@@ -3,6 +3,7 @@ from pydantic import BaseModel
 from fastapi import APIRouter
 from controllers.docController import documentController as documents
 from assets.document import DocumentFields
+from db.db_controller import SearchQuery
 
 router = APIRouter()
 
@@ -28,8 +29,15 @@ def document_union(meta_docs, keyword_docs):
 @router.post("/")
 async def search_documents(user_search: UserSearch):
   meta_docs = await documents.get_from_metadata(user_search.tags, user_search.fields)
-
-  # TODO: implement saerch by keywrod
+  
+  # TODO: implement saerch by keyword
   keyword_docs = documents.get_from_keywords(user_search.keywords)
 
   return {"docs": document_union(meta_docs, keyword_docs), "meta": meta_docs}
+
+
+@router.post("/search")
+async def search(search_query: SearchQuery):
+  print(search_query)
+  results = await documents.get_from_search_query(search_query)
+  return {"docs": results, "meta": []}

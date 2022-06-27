@@ -11,8 +11,8 @@ class User(BaseModel):
 # Create Tag Controller class
 class UserController: 
 
-  def auth_user(self, username: str, password: str): 
-    return database.auth_user(username, password)
+  async def auth_user(self, username: str, password: str): 
+    return await database.auth_user(username, password)
 
   def create_user(self, username: str, password: str):
     database.create_user(username, password)

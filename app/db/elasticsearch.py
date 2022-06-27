@@ -47,16 +47,17 @@ class ElasticSearch():
 
   # checks that the correct password has been supplied for a particular user
   async def auth_user(self, username: str, password: str) -> Boolean:
-    try:
-      URI = f'{settings.ES_API}/users/_doc/{username}'
-      response = await client.get(URI, headers=self.headers)
-      if response.json()['found']:
-        return response.json()['_source']['password'] == password
-      else:
-        return False
-    except Exception as err:
-      print("***** Error in sending the request *****")
-      print(err)
+    async with httpx.AsyncClient() as client:
+      try:
+        URI = f'{settings.ES_API}/users/_doc/{username}'
+        response = await client.get(URI, headers=self.headers)
+        if response.json()['found']:
+          return response.json()['_source']['password'] == password
+        else:
+          return False
+      except Exception as err:
+        print("***** Error in sending the request *****")
+        print(err)
 
   # Searches the document from metadata stored in our DB (tags, fiels)
   async def get_from_meta(self, tags: List[str], fieldsModel: DocumentFields) -> Document:

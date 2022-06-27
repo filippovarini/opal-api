@@ -6,13 +6,13 @@ from controllers.userController import userController
 router = APIRouter()
 
 @router.get("/auth")
-def tags_from_substring(request: Request, response: Response):
+async def tags_from_substring(request: Request, response: Response):
   username = request.headers.get('username')
   password = request.headers.get('password')
   auth_status = False
   if username is not None and password is not None:
     # check if username and password is correct
-    if not userController.auth_user(username, password):
+    if not await userController.auth_user(username, password):
       response.status_code = status.HTTP_401_UNAUTHORIZED
     else:
         auth_status = True

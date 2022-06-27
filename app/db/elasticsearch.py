@@ -39,7 +39,7 @@ class ElasticSearch():
     async with httpx.AsyncClient() as client:
       try:
         URI = f'{settings.ES_API}/users/_doc/{username}'
-        response = await client.post(self.URI, headers=self.headers, json=query)
+        response = await client.post(URI, headers=self.headers, json=query)
         return True
       except Exception as err:
         print("***** Error in sending the request *****")

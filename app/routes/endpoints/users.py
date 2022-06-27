@@ -20,10 +20,10 @@ async def tags_from_substring(request: Request, response: Response):
   return {"authenticated": auth_status}
 
 @router.post("/create")
-def tags_from_id(request: Request):
+async def tags_from_id(request: Request):
 	username = request.headers.get('username')
 	password = request.headers.get('password')
 	if username is None or password is None:
 		return {"created": False}
-	userController.create_user(username, password)
+	await userController.create_user(username, password)
 	return {"created": True}

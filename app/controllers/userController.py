@@ -30,5 +30,8 @@ class UserController:
   async def request_document_access(self, username, document_id, reason):
     await database.send_access_request(username, document_id, reason)
 
+  async def get_notifications(self, username, user_type):
+    return await database.get_notifications(username, user_type)
+
 
 userController = UserController()

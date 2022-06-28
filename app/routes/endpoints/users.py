@@ -25,3 +25,11 @@ async def tags_from_id(request: Request, user_details: UserDetails):
 		return {"created": False}
 	await userController.create_user(username, password, user_details.role, user_details.location)
 	return {"created": True}
+
+@router.get("/notifications")
+async def notifications(request: Request):
+  user = await userController.auth_user_with_request(request)
+  notifications = await userController.get_notifications(user['username'], user.get('role', 'intern'))
+  return {
+    "notifications": notifications
+  }

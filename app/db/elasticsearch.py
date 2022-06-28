@@ -108,6 +108,7 @@ class ElasticSearch():
     notification = {
       "receiver": "admin",
       "sender": username,
+      "type": "access_request",
       "document_id": document_id,
       "reason": reason,
       "resolved": False
@@ -117,6 +118,33 @@ class ElasticSearch():
         URI = f'{settings.ES_API}/notifications/_doc'
         response = await client.post(URI, headers=self.headers, json=notification)
       # TODO: handle errors
+      except Exception as err:
+        print("***** Error in sending the request *****")
+        print(err)
+
+  async def get_notifications(self, username, user_type):
+    print(user_type)
+    query = {
+      "query": {
+        "bool": {
+          "should": [
+            {"match": {"receiver": username}},
+            {"match": {"receiver": user_type}}
+          ]
+        }
+      }
+    }
+    async with httpx.AsyncClient() as client:
+      try:
+        URI = f'{settings.ES_API}/notifications/_search'
+        response = await client.post(URI, headers=self.headers, json=query)
+        results = response.json()['hits']['hits']
+        messages = []
+        for r in results:
+          message = r['_source'].copy()
+          message['id'] = r['_id']
+          messages.append(message)
+        return messages
       except Exception as err:
         print("***** Error in sending the request *****")
         print(err)

@@ -29,7 +29,7 @@ class TagController:
       tag_retrieved = tag_retrieved + [Tag(**tag) for tag in user_tags]
       return sorted(tag_retrieved, key=lambda tag: tag.name)
     else:
-      tags = await database.suggest_tags_for_category(substr, category)
+      await database.suggest_tags_for_category(substr, category)
 
   def get_from_ids(self, ids: str): 
     return [tag for tag in tags if tag.id in ids]

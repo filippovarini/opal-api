@@ -16,7 +16,6 @@ async def tags_from_substring(tag_substring: str, request: Request, response: Re
   user = await userController.auth_user_with_request(request)
   if user is None:
     response.status_code = status.HTTP_401_UNAUTHORIZED
-    username = None
 
   return {"tags": await controller.get_from_substring(tag_substring, username=user['username'])}
 

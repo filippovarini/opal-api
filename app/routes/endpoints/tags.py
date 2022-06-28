@@ -18,7 +18,7 @@ async def tags_from_substring(tag_substring: str, request: Request, response: Re
     response.status_code = status.HTTP_401_UNAUTHORIZED
     username = None
 
-  return {"tags": await controller.get_from_substring(tag_substring, username=username)}
+  return {"tags": await controller.get_from_substring(tag_substring, username=user['username'])}
 
 @router.get("/{tag_category}/{tag_substring}")
 async def tags_from_substring_from_category(tag_category: str, tag_substring: str):

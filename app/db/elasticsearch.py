@@ -8,6 +8,47 @@ import httpx
 import random
 import json
 
+class ElasticSearchQuery:
+  def __init__(self):
+    self.must_fields = []
+    self.should_fields = []
+    self.must_not_fields = []
+    self.top_level_fields = ["format", "tags"]
+
+  def add_date_range(self, lower_limit: str, upper_limit: str):
+    self.must_fields.append({"range" : {
+      "fields.date" : { "gte" : lower_limit, "lte" : upper_limit }
+    }})
+
+  def add_term_search(self, field: str, term: str):
+    field_prefix = ""
+    if field not in self.top_level_fields:
+      field_prefix = "fields."
+    self.should_fields.append({
+      "match": {(field_prefix + field): term}
+    })
+
+  def add_negative_term_search(self, field: str, term: str):
+    field_prefix = ""
+    if field not in self.top_level_fields:
+      field_prefix = "fields."
+    self.must_not_fields.append({
+      "match": {field_prefix + field: term}
+    })
+
+  def build_query(self):
+    query = {"query": {
+      "bool": {}
+    }}
+    if self.must_fields:
+      query["query"]["bool"]["must"] = self.must_fields
+    if self.should_fields:
+      query["query"]["bool"]["should"] = self.should_fields
+    if self.must_not_fields:
+      query["query"]["bool"]["must_not"] = self.must_not_fields
+    return query
+  
+
 class ElasticSearch():
   URI = f'{settings.ES_API}/{settings.DOC_INDEX}/_search'
   POST_URI = f'{settings.ES_API}/{settings.DOC_INDEX}/_doc'
@@ -134,6 +175,19 @@ class ElasticSearch():
       try:
         URI = f'{settings.ES_API}/notifications/_doc'
         response = await client.post(URI, headers=self.headers, json=notification)
+      except Exception as err:
+        print("***** Error in sending the request *****")
+        print(err)
+
+
+  async def get_from_search_query(self, query: ElasticSearchQuery):
+    async with httpx.AsyncClient() as client:
+      try:
+        print(query.build_query())
+        response = await client.post(self.URI, headers=self.headers, json=query.build_query())
+        docs = response.json()['hits']['hits']
+        return [Document(**{'id': doc['_id'], **doc['_source']}) for doc in docs]
+
       # TODO: handle errors
       except Exception as err:
         print("***** Error in sending the request *****")

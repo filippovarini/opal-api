@@ -1,6 +1,6 @@
 from assets.document import Document, DocumentFields
 from typing import List
-from db.db_controller import database
+from db.db_controller import database, SearchQuery, query_to_elastic_query
 
 
 # Checks whether BIG list has all elements of SMALL
@@ -22,5 +22,7 @@ class DocumentController:
   async def grant_access_to(self, user_id: str, document_id: str):
     await database.grant_user_access_to_document(user_id, document_id)
 
+  async def get_from_search_query(self, search_query: SearchQuery):
+    return await database.get_from_search_query(query_to_elastic_query(search_query))
   
 documentController = DocumentController()

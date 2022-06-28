@@ -31,10 +31,12 @@ class ElasticSearch():
         print(err)
 
   # creates a new user in elasticsearch
-  async def create_user(self, username: str, password: str) -> Boolean:
+  async def create_user(self, username: str, password: str, role: str, location: str) -> Boolean:
     query = {
       "username": username,
-      "password": password
+      "password": password,
+      "role": role,
+      "location": location
     }
     async with httpx.AsyncClient() as client:
       try:

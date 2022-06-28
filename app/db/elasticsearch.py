@@ -122,6 +122,23 @@ class ElasticSearch():
         print("***** Error in sending the request *****")
         print(err)
 
+  async def notify_of_access_grant(self, username, document_id):
+    notification = {
+      "receiver": username,
+      "sender": "admin",
+      "type": "access_grant",
+      "document_id": document_id,
+      "resolved": False
+    }
+    async with httpx.AsyncClient() as client:
+      try:
+        URI = f'{settings.ES_API}/notifications/_doc'
+        response = await client.post(URI, headers=self.headers, json=notification)
+      # TODO: handle errors
+      except Exception as err:
+        print("***** Error in sending the request *****")
+        print(err)
+
   async def get_notifications(self, username, user_type):
     query = {
       "query": {

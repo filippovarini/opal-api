@@ -62,5 +62,6 @@ async def grant_access(request: Request, access_grant: AccessGrant):
   if user is None or user['role'] != "admin":
     return {"success": False}
   await documents.grant_access_to(access_grant.granted_to, access_grant.document_id)
+  await user.notify_of_access_grant(access_grant.granted_to, access_grant.document_id)
   return {"success": True}
   

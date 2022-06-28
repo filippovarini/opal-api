@@ -6,11 +6,8 @@ from pydantic import BaseModel
 from fastapi import APIRouter, Request
 from controllers.docController import documentController as documents
 from assets.document import DocumentFields
-<<<<<<< HEAD
 from assets.user import User
-=======
 from db.db_controller import SearchQuery
->>>>>>> fix_search
 
 router = APIRouter()
 

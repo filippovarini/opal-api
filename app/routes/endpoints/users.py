@@ -7,7 +7,7 @@ from assets.user import UserDetails
 router = APIRouter()
 
 @router.get("/auth")
-async def tags_from_substring(request: Request, response: Response):
+async def auth_user(request: Request, response: Response):
   user = await userController.auth_user_with_request(request)
   auth_status = False
   if user is None:
@@ -18,7 +18,7 @@ async def tags_from_substring(request: Request, response: Response):
   return {"authenticated": auth_status}
 
 @router.post("/create")
-async def tags_from_id(request: Request, user_details: UserDetails):
+async def create_user(request: Request, user_details: UserDetails):
 	username = request.headers.get('username')
 	password = request.headers.get('password')
 	if username is None or password is None:

@@ -103,6 +103,68 @@ class ElasticSearch():
         print(err)
         return None
 
+  async def add_user_search_tag(self, username, tag_label, result_ids, search):
+    tag_doc = {
+      "label": tag_label,
+      "owner": username,
+      "result_ids": result_ids,
+      "search": search
+    }
+    async with httpx.AsyncClient() as client:
+      try:
+        URI = f'{settings.ES_API}/user_tags/_doc'
+        response = await client.post(URI, headers=self.headers, json=tag_doc)
+      except Exception as err:
+        print("***** Error in sending the request *****")
+        print(err)
+
+
+  async def suggest_user_search_tags(self, substr: str):
+    query = {
+      "suggest": {
+        "tag_suggestion" : {
+          "text" : substr,
+          "term" : {
+            "field" : "label"
+          }
+        }
+      }
+    }
+    async with httpx.AsyncClient() as client:
+      try:
+        URI = f'{settings.ES_API}/user_tags/_search'
+        response = await client.post(URI, headers=self.headers, json=query)
+        response_json = response.json()
+        print("baana1")
+        print(response_json)
+        suggestion_objects = response_json["suggest"]["tag_suggestion"][0]["options"]
+        suggestion_labels = [obj["text"] for obj in suggestion_objects]
+        print("suggestion_labels:")
+        print(suggestion_labels)
+        tags = list()
+        for label in suggestion_labels:
+          query = {
+            "query": {
+              "term" : {
+                "label": label
+              }
+            }
+          }
+          URI = f'{settings.ES_API}/user_tags/_search'
+          response = await client.post(URI, headers=self.headers, json=query)
+          result_obj = response.json()["hits"]["hits"][0]
+          tags.append({
+            "id": result_obj["_id"],
+            "name": result_obj["_source"]["label"],
+            "owner": result_obj["_source"]["owner"],
+            "result_ids": result_obj["_source"]["result_ids"]
+          })
+        return tags
+      except Exception as err:
+        print("***** Error in sending the request *****")
+        print(err)
+    
+
   # Searches the document from metadata stored in our DB (tags, fiels)
   async def get_from_meta(self, tags: List[str], fieldsModel: DocumentFields) -> Document:
     tagQuery = {

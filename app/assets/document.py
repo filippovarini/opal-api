@@ -21,6 +21,7 @@ class DocumentFields(BaseModel):
   pdf_url: Optional[str]
   summary: Optional[str]
   permitted_viewers: Optional[List[str]] = []
+  requested_access: Optional[List[str]] = []
 
 
   

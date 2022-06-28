@@ -25,6 +25,7 @@ class AccessRequest(BaseModel):
 class AccessGrant(BaseModel):
   document_id: str
   granted_to: str
+  notification_id: Optional[str] = None
 
   
 # Given two independent document searches represented as array of same Document 
@@ -63,7 +64,9 @@ async def grant_access(request: Request, access_grant: AccessGrant):
   if user is None or user['role'] != "admin":
     return {"success": False}
   await documents.grant_access_to(access_grant.granted_to, access_grant.document_id)
-  await user.notify_of_access_grant(access_grant.granted_to, access_grant.document_id)
+  if access_grant.notification_id is not None:
+    await userController.release_notification(access_grant.notification_id)
+  await userController.notify_of_access_grant(access_grant.granted_to, access_grant.document_id)
   return {"success": True}
   
 

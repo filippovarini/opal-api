@@ -20,6 +20,10 @@ async def tags_from_substring(tag_substring: str, request: Request, response: Re
 
   return {"tags": await controller.get_from_substring(tag_substring, username=username)}
 
+@router.get("/{tag_category}/{tag_substring}")
+async def tags_from_substring_from_category(tag_category: str, tag_substring: str):
+  tags = await controller.get_from_substring(tag_substring, category=tag_category)
+
 @router.post("/")
 def tags_from_id(ids: List[str], response: Response):
   tags = controller.get_from_ids(ids)

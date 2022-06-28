@@ -135,12 +135,8 @@ class ElasticSearch():
         URI = f'{settings.ES_API}/user_tags/_search'
         response = await client.post(URI, headers=self.headers, json=query)
         response_json = response.json()
-        print("baana1")
-        print(response_json)
         suggestion_objects = response_json["suggest"]["tag_suggestion"][0]["options"]
         suggestion_labels = [obj["text"] for obj in suggestion_objects]
-        print("suggestion_labels:")
-        print(suggestion_labels)
         tags = list()
         for label in suggestion_labels:
           query = {
@@ -163,6 +159,28 @@ class ElasticSearch():
       except Exception as err:
         print("***** Error in sending the request *****")
         print(err)
+
+  async def suggest_tags_for_category(self, substring: str, category: str):
+    query = {
+      "query": {
+        "bool" : {
+          "should" [
+            {"match": {("fields."+category): substring}}
+          ]
+        }
+      }
+    }
+    async with httpx.AsyncClient() as client:
+      try:
+        URI = f'{settings.ES_API}/user_tags/_search'
+        response = await client.post(URI, headers=self.headers, json=query)
+        response_json = response.json()
+        results = [res['_source'].get(category) for res in response_json["hits"]["hits"]]
+        return []
+      except Exception as err:
+        print("***** Error in sending the request *****")
+        print(err)
+
     
 
   # Searches the document from metadata stored in our DB (tags, fiels)
@@ -216,9 +234,22 @@ class ElasticSearch():
       "reason": reason,
       "resolved": False
     }
+
+    document_update = {
+      "script" : {
+          "source": "ctx._source.requested_access.add(params.viewer)",
+          "lang": "painless",
+          "params" : {
+              "viewer" : username
+          }
+      }
+    }
     async with httpx.AsyncClient() as client:
       try:
         URI = f'{settings.ES_API}/notifications/_doc'
+        response = await client.post(URI, headers=self.headers, json=notification)
+
+        URI = f'{settings.ES_API}/{settings.DOC_INDEX}/_update/{document_id}'
         response = await client.post(URI, headers=self.headers, json=notification)
       # TODO: handle errors
       except Exception as err:
@@ -291,10 +322,19 @@ class ElasticSearch():
           }
       }
     }
-    URI = f'{settings.ES_API}/{settings.DOC_INDEX}/_update'
+    URI = f'{settings.ES_API}/{settings.DOC_INDEX}/_update/{document_id}'
     async with httpx.AsyncClient() as client:
       try:
         response = await client.post(URI, headers=self.headers, json=update)
+      except Exception as err:
+        print("***** Error in sending the request *****")
+        print(err)
+
+  async def release_notification(self, notification_id: str):
+    URI = f'{settings.ES_API}/notifications/_doc/{notification_id}'
+    async with httpx.AsyncClient() as client:
+      try:
+        response = await client.delete(URI, headers=self.headers)
       except Exception as err:
         print("***** Error in sending the request *****")
         print(err)

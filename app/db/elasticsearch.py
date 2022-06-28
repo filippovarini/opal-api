@@ -123,7 +123,6 @@ class ElasticSearch():
         print(err)
 
   async def get_notifications(self, username, user_type):
-    print(user_type)
     query = {
       "query": {
         "bool": {
@@ -145,6 +144,24 @@ class ElasticSearch():
           message['id'] = r['_id']
           messages.append(message)
         return messages
+      except Exception as err:
+        print("***** Error in sending the request *****")
+        print(err)
+
+  async def grant_user_access_to_document(self, user_id, document_id):
+    update = {
+      "script" : {
+          "source": "ctx._source.permitted_viewers.add(params.viewer)",
+          "lang": "painless",
+          "params" : {
+              "viewer" : user_id
+          }
+      }
+    }
+    URI = f'{settings.ES_API}/{settings.DOC_INDEX}/_update'
+    async with httpx.AsyncClient() as client:
+      try:
+        response = await client.post(URI, headers=self.headers, json=update)
       except Exception as err:
         print("***** Error in sending the request *****")
         print(err)

@@ -19,5 +19,8 @@ class DocumentController:
   def get_from_keywords(self, keywords: List[str]) -> List[Document]:
     return []
 
+  async def grant_access_to(self, user_id: str, document_id: str):
+    await database.grant_user_access_to_document(user_id, document_id)
+
   
 documentController = DocumentController()

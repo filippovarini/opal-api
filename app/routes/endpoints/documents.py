@@ -1,5 +1,6 @@
 from optparse import Option
 from typing import Optional, List
+from controllers.docController import DocumentController
 from controllers.userController import userController
 from pydantic import BaseModel
 from fastapi import APIRouter, Request
@@ -19,6 +20,11 @@ class UserSearch(BaseModel):
 class AccessRequest(BaseModel):
   document_id: str
   reason: Optional[str] = ""
+
+class AccessGrant(BaseModel):
+  document_id: str
+  granted_to: str
+
   
 # Given two independent document searches represented as array of same Document 
 # object, union them
@@ -45,5 +51,16 @@ async def search_documents(user_search: UserSearch):
 @router.post("/requestaccess")
 async def request_access(request: Request, access_request: AccessRequest):
   user = await userController.auth_user_with_request(request)
+  if user is None:
+    return {"success": False}
   await userController.request_document_access(user['username'], access_request.document_id, access_request.reason)
   return {"success": True}
+
+@router.post("/grantaccess")
+async def grant_access(request: Request, access_grant: AccessGrant):
+  user = await userController.auth_user_with_request(request)
+  if user is None or user['role'] != "admin":
+    return {"success": False}
+  await documents.grant_access_to(access_grant.granted_to, access_grant.document_id)
+  return {"success": True}
+  

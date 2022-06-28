@@ -20,7 +20,7 @@ class DocumentFields(BaseModel):
   full_text: Optional[str]
   pdf_url: Optional[str]
   summary: Optional[str]
-  permitted_viewers: Optional[List[str]]
+  permitted_viewers: Optional[List[str]] = []
 
 
   

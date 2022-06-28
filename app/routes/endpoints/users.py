@@ -1,27 +1,19 @@
 from typing import List, Dict, Optional
-from pydantic import BaseModel
 from fastapi import APIRouter, Response, status, Request
 from controllers.tagController import controller
 from controllers.userController import userController
+from assets.user import UserDetails
 
 router = APIRouter()
 
-# Type model of User Search request body
-class UserDetails(BaseModel):
-  role: Optional[str] = "intern"  
-  location: Optional[str] = "global"
-
 @router.get("/auth")
 async def tags_from_substring(request: Request, response: Response):
-  username = request.headers.get('username')
-  password = request.headers.get('password')
+  user = await userController.auth_user_with_request(request)
   auth_status = False
-  if username is not None and password is not None:
-    # check if username and password is correct
-    if not await userController.auth_user(username, password):
-      response.status_code = status.HTTP_401_UNAUTHORIZED
-    else:
-        auth_status = True
+  if user is None:
+    response.status_code = status.HTTP_401_UNAUTHORIZED
+  else:
+    auth_status = True
 
   return {"authenticated": auth_status}
 

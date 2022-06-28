@@ -1,6 +1,6 @@
 from tempfile import tempdir
 from textwrap import indent
-from typing import List
+from typing import List, Optional
 from xmlrpc.client import Boolean
 from assets.document import Document, DocumentFields
 from core.config import settings
@@ -48,18 +48,19 @@ class ElasticSearch():
         print(err)
 
   # checks that the correct password has been supplied for a particular user
-  async def auth_user(self, username: str, password: str) -> Boolean:
+  async def auth_user(self, username: str, password: str):
     async with httpx.AsyncClient() as client:
       try:
         URI = f'{settings.ES_API}/users/_doc/{username}'
         response = await client.get(URI, headers=self.headers)
         if response.json()['found']:
-          return response.json()['_source']['password'] == password
-        else:
-          return False
+          if response.json()['_source']['password'] == password:
+            return response.json()['_source']
+        return None
       except Exception as err:
         print("***** Error in sending the request *****")
         print(err)
+        return None
 
   # Searches the document from metadata stored in our DB (tags, fiels)
   async def get_from_meta(self, tags: List[str], fieldsModel: DocumentFields) -> Document:
@@ -98,6 +99,23 @@ class ElasticSearch():
         docs = response.json()['hits']['hits']
         return [Document(**{'id': doc['_id'], **doc['_source']}) for doc in docs]
 
+      # TODO: handle errors
+      except Exception as err:
+        print("***** Error in sending the request *****")
+        print(err)
+
+  async def send_access_request(self, username, document_id, reason):
+    notification = {
+      "receiver": "admin",
+      "sender": username,
+      "document_id": document_id,
+      "reason": reason,
+      "resolved": False
+    }
+    async with httpx.AsyncClient() as client:
+      try:
+        URI = f'{settings.ES_API}/notifications/_doc'
+        response = await client.post(URI, headers=self.headers, json=notification)
       # TODO: handle errors
       except Exception as err:
         print("***** Error in sending the request *****")

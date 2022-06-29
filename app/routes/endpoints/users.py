@@ -9,13 +9,11 @@ router = APIRouter()
 @router.get("/auth")
 async def auth_user(request: Request, response: Response):
   user = await userController.auth_user_with_request(request)
-  auth_status = False
   if user is None:
     response.status_code = status.HTTP_401_UNAUTHORIZED
+    return {"authenticated": False}
   else:
-    auth_status = True
-
-  return {"authenticated": auth_status}
+    return {"authenticated": True, "user": user}
 
 @router.post("/create")
 async def create_user(request: Request, user_details: UserDetails):

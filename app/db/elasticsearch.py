@@ -237,7 +237,7 @@ class ElasticSearch():
 
     document_update = {
       "script" : {
-          "source": "ctx._source.requested_access.add(params.viewer)",
+          "source": "ctx._source.fields.requested_access.add(params.viewer)",
           "lang": "painless",
           "params" : {
               "viewer" : username
@@ -315,7 +315,7 @@ class ElasticSearch():
   async def grant_user_access_to_document(self, user_id, document_id):
     update = {
       "script" : {
-          "source": "ctx._source.permitted_viewers.add(params.viewer)",
+          "source": "ctx._source.fields.permitted_viewers.add(params.viewer)",
           "lang": "painless",
           "params" : {
               "viewer" : user_id

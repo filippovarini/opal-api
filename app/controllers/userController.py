@@ -37,7 +37,7 @@ class UserController:
     return await database.get_notifications(username, user_type)
 
   async def release_notification(self, notification_id: str):
-    await database.relase_notification(notification_id)
+    await database.release_notification(notification_id)
 
 
 userController = UserController()

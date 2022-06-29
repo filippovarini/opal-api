@@ -250,7 +250,7 @@ class ElasticSearch():
         response = await client.post(URI, headers=self.headers, json=notification)
 
         URI = f'{settings.ES_API}/{settings.DOC_INDEX}/_update/{document_id}'
-        response = await client.post(URI, headers=self.headers, json=notification)
+        response = await client.post(URI, headers=self.headers, json=document_update)
       # TODO: handle errors
       except Exception as err:
         print("***** Error in sending the request *****")

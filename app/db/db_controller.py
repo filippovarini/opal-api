@@ -16,7 +16,6 @@ class SearchQuery(BaseModel):
   format: Optional[str] = None
 
 def query_to_elastic_query(search_query: SearchQuery) -> ElasticSearchQuery:
-    print(search_query)
     elastic_query = ElasticSearchQuery()
     for t in search_query.tags:
         elastic_query.add_term_search("tags", t)

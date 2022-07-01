@@ -31,8 +31,10 @@ class TagController:
     else:
       await database.suggest_tags_for_category(substr, category)
 
-  def get_from_ids(self, ids: str): 
-    return [tag for tag in tags if tag.id in ids]
+  async def get_from_ids(self, ids: str): 
+    general_tags = [tag for tag in tags if tag.id in ids and tag.id.isnumeric()]
+    user_tags = await database.get_tags_from_ids([id for id in ids if not id.isnumeric()])
+    return general_tags + user_tags
 
   async def add_search_tag(self, username: str, tag_name: str, result_ids: List[str], search):
     await database.add_user_search_tag(username, tag_name, result_ids, search)

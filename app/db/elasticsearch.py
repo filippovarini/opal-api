@@ -121,41 +121,18 @@ class ElasticSearch():
 
   async def suggest_user_search_tags(self, substr: str):
     query = {
-      "suggest": {
-        "tag_suggestion" : {
-          "text" : substr,
-          "term" : {
-            "field" : "label"
-          }
-        }
-      }
+        "match": {"label": substr}
     }
+
     async with httpx.AsyncClient() as client:
       try:
         URI = f'{settings.ES_API}/user_tags/_search'
-        response = await client.post(URI, headers=self.headers, json=query)
+        response = await client.post(URI, headers=self.headers, json={"query": query})
         response_json = response.json()
-        suggestion_objects = response_json["suggest"]["tag_suggestion"][0]["options"]
-        suggestion_labels = [obj["text"] for obj in suggestion_objects]
-        tags = list()
-        for label in suggestion_labels:
-          query = {
-            "query": {
-              "term" : {
-                "label": label
-              }
-            }
-          }
-          URI = f'{settings.ES_API}/user_tags/_search'
-          response = await client.post(URI, headers=self.headers, json=query)
-          result_obj = response.json()["hits"]["hits"][0]
-          tags.append({
-            "id": result_obj["_id"],
-            "name": result_obj["_source"]["label"],
-            "owner": result_obj["_source"]["owner"],
-            "result_ids": result_obj["_source"]["result_ids"]
-          })
-        return tags
+        print('response_json')
+        suggestion_objects = response_json["hits"]["hits"]
+        suggestion_labels = [{"name": obj["_source"]['label'], "type": "user-defined", "id": obj["_id"] } for obj in suggestion_objects]
+        return suggestion_labels
       except Exception as err:
         print("***** Error in sending the request *****")
         print(err)
@@ -182,6 +159,19 @@ class ElasticSearch():
         print(err)
 
     
+  async def get_tags_from_ids(self, ids):
+    async with httpx.AsyncClient() as client:
+      try:
+        tags = []
+        for id in ids:
+          URI = f'{settings.ES_API}/user_tags/_doc/{id}'
+          response = await client.get(URI, headers=self.headers)
+          tags.append({'name': response.json()['_source']['label'], 'type': "user-defined", 'id': response.json()['_id']})
+        
+        return tags
+      except Exception as err:
+        print("***** Error in sending the request *****")
+        print(err)
 
   # Searches the document from metadata stored in our DB (tags, fiels)
   async def get_from_meta(self, tags: List[str], fieldsModel: DocumentFields) -> Document:

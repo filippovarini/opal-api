@@ -24,13 +24,10 @@ async def tags_from_substring_from_category(tag_category: str, tag_substring: st
   tags = await controller.get_from_substring(tag_substring, category=tag_category)
 
 @router.post("/")
-def tags_from_id(ids: List[str], response: Response):
-  tags = controller.get_from_ids(ids)
-  if (len(tags) == len(ids)):
-    return {"tags": tags}
-  else:
-    response.status_code = status.HTTP_404_NOT_FOUND
-    return {"message": "Some ids are invalid!"}
+async def tags_from_id(ids: List[str], response: Response):
+  tags = await controller.get_from_ids(ids)
+  return {"tags": tags}
+ 
 
 @router.post("/create_tag")
 async def create_tag(saved_search_tag: SavedSearchTag, request: Request):

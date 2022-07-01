@@ -26,11 +26,11 @@ def tags_from_substring(tag_substring: str, request: Request, response: Response
 @router.post("/")
 def tags_from_id(ids: List[str], response: Response):
   tags = controller.get_from_ids(ids)
-  if (len(tags) == len(ids)):
-    return {"tags": tags}
-  else:
-    response.status_code = status.HTTP_404_NOT_FOUND
-    return {"message": "Some ids are invalid!"}
+  # if (len(tags) == len(ids)):
+  return {"tags": tags}
+  # else:
+    # response.status_code = status.HTTP_404_NOT_FOUND
+    # return {"message": "Some ids are invalid!"}
 
 @router.post("/create_tag")
 async def create_tag(saved_search_tag: SavedSearchTag, request: Request):

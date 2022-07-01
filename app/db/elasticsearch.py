@@ -5,8 +5,6 @@ from xmlrpc.client import Boolean
 from assets.document import Document, DocumentFields
 from core.config import settings
 import httpx
-import random
-import json
 
 class ElasticSearch():
   URI = f'{settings.ES_API}/{settings.DOC_INDEX}/_search'
@@ -87,6 +85,7 @@ class ElasticSearch():
         }
       }
     }
+    
     async with httpx.AsyncClient() as client:
       try:
         URI = f'{settings.ES_API}/user_tags/_doc'

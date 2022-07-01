@@ -22,9 +22,8 @@ tags = [Tag(**tag) for tag in jsonObject['tags']]
 class TagController: 
 
   def get_from_substring(self, substr: str, username: str = None): 
-    print(username)
     tag_retrieved = [tag for tag in tags if substr.lower() in tag.name.lower()]
-    user_tags = database.suggest_user_search_tags(substr)
+    user_tags = [Tag(id="31", name="tag1", type="user_defined")]
     tag_retrieved = tag_retrieved + user_tags
     return sorted(tag_retrieved, key=lambda tag: tag.name)
 

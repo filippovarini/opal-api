@@ -12,6 +12,7 @@ class User(BaseModel):
 class UserController: 
 
   def auth_user(self, username: str, password: str): 
+    print("tito")
     return database.auth_user(username, password)
 
   def create_user(self, username: str, password: str):

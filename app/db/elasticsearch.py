@@ -88,15 +88,26 @@ class ElasticSearch():
     
     async with httpx.AsyncClient() as client:
       try:
-        URI = f'{settings.ES_API}/user_tags/_doc'
+        URI = f'{settings.ES_API}/user_tags/_search'
         response = await client.post(URI, headers=self.headers, json=query)
         response_json = response.json()
-        suggestion_objects = response_json["suggestion"]["tag_suggestion"]["options"]
+        print("baana1")
+        print(response_json)
+        suggestion_objects = response_json["suggest"]["tag_suggestion"][0]["options"]
         suggestion_labels = [obj["text"] for obj in suggestion_objects]
+        print("suggestion_labels:")
+        print(suggestion_labels)
         tags = list()
         for label in suggestion_labels:
-          URI = f'{settings.ES_API}/user_tags/_doc/{label}'
-          response = await client.get(URI, headers=self.headers)
+          query = {
+            "query": {
+              "term" : {
+                "label": label
+              }
+            }
+          }
+          URI = f'{settings.ES_API}/user_tags/_search'
+          response = await client.post(URI, headers=self.headers, json=query)
           result_obj = response.json()["hits"]["hits"][0]
           tags.append({
             "id": result_obj["_id"],

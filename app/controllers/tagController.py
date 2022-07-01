@@ -1,4 +1,4 @@
-from typing import List, Dict
+from typing import List, Dict, Optional
 from unittest import result
 from pydantic import BaseModel
 from db.db_controller import database
@@ -8,7 +8,8 @@ import json
 class Tag(BaseModel):
   id: str
   name: str
-  type: str
+  owner: Optional[str] = "global"
+  type: Optional[str] = "user_defined"
   
 
 # Read Fake Json data
